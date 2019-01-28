@@ -24,20 +24,20 @@ for (var i = 0; i < repository.length; i++) {
 // Another thought process.. creating each variable beforehand and putting them into the Array.
 var objectOne = {
   name: 'Bulbasaur',
-  height: 7,
-  types: ['grass', ' poison ']
+  types: ['grass', ' poison '],
+  height: 7
 };
 
 var objectTwo = {
   name: 'Charmander',
-  height: 6,
-  types: ['fire ']
+  types: ['fire '],
+  height: 6
 };
 
 var objectThree = {
   name: 'squirtle',
-  height: 5,
-  types: ['water ']
+  types: ['water '],
+  height: 5
 };
 
 var repository = [
@@ -47,5 +47,8 @@ var repository = [
 ];
 
 for (var i = 0; i < repository.length; i++) {
-  document.write(repository[i].name + ' ' + '(height: ' + repository[i].height + ') ' + repository[i].types);
-}
+  document.write(repository[i].name + ' ' +  repository[i].types + '(height: ' + repository[i].height + ')' + ' ');
+  if (repository[i].height >= 7) {
+    document.write('- Wow, that\'s big ');
+  };
+};
