@@ -25,19 +25,19 @@ for (var i = 0; i < repository.length; i++) {
 var objectOne = {
   name: 'Bulbasaur',
   height: 7,
-  types: ['grass', 'poison']
+  types: ['grass', ' poison ']
 };
 
 var objectTwo = {
   name: 'Charmander',
   height: 6,
-  types: ['fire']
+  types: ['fire ']
 };
 
 var objectThree = {
   name: 'squirtle',
   height: 5,
-  types: ['water']
+  types: ['water ']
 };
 
 var repository = [
@@ -47,5 +47,5 @@ var repository = [
 ];
 
 for (var i = 0; i < repository.length; i++) {
-  document.write(repository[i].name + '(height: ' + repository[i].height + ')' + repository[i].types);
+  document.write(repository[i].name + ' ' + '(height: ' + repository[i].height + ') ' + repository[i].types);
 }
