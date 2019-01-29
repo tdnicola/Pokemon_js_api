@@ -35,7 +35,7 @@ var objectTwo = {
 };
 
 var objectThree = {
-  name: 'squirtle',
+  name: 'Squirtle',
   types: ['water '],
   height: 5
 };
@@ -47,8 +47,8 @@ var repository = [
 ];
 
 for (var i = 0; i < repository.length; i++) {
-  document.write(repository[i].name + ' ' +  repository[i].types + '(height: ' + repository[i].height + ')' + ' ');
+  document.write(repository[i].name + ' ' +  repository[i].types + '(height: ' + repository[i].height + ')' + ' ' + '<br>');
   if (repository[i].height >= 7) {
-    document.write('- Wow, that\'s big ');
+    document.write('- Wow, that\'s big <br>');
   };
 };
