@@ -38,6 +38,6 @@ console.log(pokemonRepository.getAll());
 
 // creating printing without using the for loop
 
-pokemonRepository.getAll().forEach(function (pokemonData) {
-  document.write('name:' + pokemonData.name + 'height: ' + pokemonData.height + ' ' + 'types:' + pokemonData.types + '<br>');
-});
+// pokemonRepository.getAll().forEach(function (pokemonData) {
+//   document.write('name:' + pokemonData.name + 'height: ' + pokemonData.height + ' ' + 'types:' + pokemonData.types + '<br>');
+// });

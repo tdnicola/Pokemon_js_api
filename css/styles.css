@@ -1,6 +1,23 @@
-td {
-  border: 2px solid blue;
+h1 {
+  width: 300px;
+  text-align: center;
 }
-span {
 
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin: 10px;
+  background-color: #96a5bc;
+  border: 1px solid black;
+  width: 200px;
+  text-align: center;
+}
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  cursor: pointer;
 }
