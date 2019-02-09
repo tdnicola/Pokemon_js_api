@@ -43,8 +43,14 @@ var pokemonRepository = (function () {
     var $button = document.createElement('button');
     $li.appendChild($button);
     $button.innerText = repository.name;
+    $button.addEventListener('click', function (event) {
+      console.log(repository.name)
+    })
   }
 
+  function showDetails (pokemon) {
+    console.log(pokemon)
+  }
 })()
 
 // puts the elements onto the page from the addListItem above
