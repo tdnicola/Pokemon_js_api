@@ -17,27 +17,38 @@ var pokemonRepository = (function () {
     }
   ]
 
-  function add (repositoryO) {
-    repository.push(repositoryO);
+  // allows to add a new pokemon to the array repository
+  function add (repository) {
+    repository.push(repository);
   }
 
   function getAll () {
     return repository;
   }
 
+  // returns the functions outside of the iife
+
   return {
     add: add,
-    getAll: getAll
+    getAll: getAll,
+    addListItem: addListItem
   };
+
+  // Function that creates li inside of ul elements and inserts the pokemon names
+
+  function addListItem (repository) {
+    var $ul = document.querySelector('ul');
+    var $li = document.createElement('li');
+    $ul.appendChild($li);
+    var $button = document.createElement('button');
+    $li.appendChild($button);
+    $button.innerText = repository.name;
+  }
 
 })()
 
-console.log(pokemonRepository.getAll());
-pokemonRepository.add({ name: 'mewstwostheblues', height: '8', types: 'gangster' });
-console.log(pokemonRepository.getAll());
+// puts the elements onto the page from the addListItem above
 
-// creating printing without using the for loop
-
-pokemonRepository.getAll().forEach(function (pokemonData) {
-  document.write('name:' + pokemonData.name + 'height: ' + pokemonData.height + ' ' + 'types:' + pokemonData.types + '<br>');
-});
+pokemonRepository.getAll().forEach(function (repository) {
+  pokemonRepository.addListItem(repository)
+})
