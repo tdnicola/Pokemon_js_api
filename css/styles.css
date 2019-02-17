@@ -8,16 +8,35 @@ ul {
 }
 
 li {
-  margin: 10px;
-  background-color: #96a5bc;
+  margin: 25px;
+  background-color: #5a90ed;
   border: 1px solid black;
-  width: 200px;
+  width: 175px;
+  height: 30px;
   text-align: center;
+  border-radius: 8px;
 }
 
 button {
   background: none;
-  color: inherit;
+  color: white;
   border: none;
   cursor: pointer;
+  font-size: 16px;
+}
+#pokemonDeets {
+  background-color:  #FFDE00;
+  height: 250px;
+  width: 450px;
+  border: 1px solid black;
+  margin-left: 400px;
+  position: fixed;
+  top: 100px;
+  border-radius: 8px;
+}
+.pokemonNames {
+  background-color: #f44245;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 10px;
 }

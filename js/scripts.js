@@ -18,9 +18,12 @@ var pokemonRepository = (function () {
     var $button = document.createElement('button');
     $li.appendChild($button);
     $button.innerText = pokemon.name;
+    // pokemon details section
     $button.addEventListener('click', function (event) {
-      console.log(pokemon.name, pokemon.detailsUrl, pokemon.height, pokemon.types, pokemon.imageUrl) //Loading where the info goes. Will change to append to a div
+      console.log(pokemon.name, pokemon.detailsUrl, pokemon.height, pokemon.types, pokemon.imageUrl) // where the actual console log is showing info
     })
+
+
     }
 
   function loadList () {
@@ -30,7 +33,8 @@ var pokemonRepository = (function () {
       json.results.forEach(function (item) {
         var pokemon = {
           name: item.name,
-          detailsUrl: item.url,
+          detailsUrl: item.url, // property to load the detailed data for the pokemon
+           };
         add(pokemon);
       });
     }).catch(function (e) {
@@ -44,7 +48,8 @@ var pokemonRepository = (function () {
     return fetch(url).then(function (response) {
       return response.json();
     }).then(function (details) {
-      item.imageUrl = details.sprites.front_default; // loading items
+      //hmmmm.. need to load these...
+      item.imageUrl = details.sprites.front_default; // does this need to be repository.imageUrl?
       item.height = details.height;
       item.types = details.types.map(function(item) {return item.type.name})
     }).catch(function (e) {
@@ -52,11 +57,10 @@ var pokemonRepository = (function () {
     })
   }
 
-    // couldn't get showDetailsto work...
+  // can't quite get this code to work.
   // function showDetails (item) {
-  //   pokemonRepository.loadDetails(item).then(function() {
-  //   console.log(item.height); }) // not showing anything for console.log
-  // }
+  //  loadDetails(item)
+  //  }
 
   // returns the functions outside of the iife
   return {
@@ -76,3 +80,7 @@ pokemonRepository.loadList().then(function() {
   pokemonRepository.loadDetails(pokemon)
     });
 });
+
+// pokemonRepository.getAll().forEach(function (repository) {
+//  pokemonRepository.addListItem(repository)
+// })
