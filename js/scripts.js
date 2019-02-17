@@ -20,7 +20,7 @@ var pokemonRepository = (function () {
     $button.innerText = pokemon.name;
     // pokemon details section
     $button.addEventListener('click', function (event) {
-      console.log(pokemon.name, pokemon.detailsUrl, pokemon.height, pokemon.types, pokemon.imageUrl) // where the actual console log is showing info
+      showDetails(pokemon)
     })
 
 
@@ -58,9 +58,9 @@ var pokemonRepository = (function () {
   }
 
   // can't quite get this code to work.
-  // function showDetails (item) {
-  //  loadDetails(item)
-  //  }
+   function showDetails (pokemon) {
+    console.log(pokemon.name, pokemon.detailsUrl, pokemon.height, pokemon.types, pokemon.imageUrl) // where the actual console log is showing info
+    }
 
   // returns the functions outside of the iife
   return {
