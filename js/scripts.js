@@ -9,21 +9,19 @@ var pokemonRepository = (function () {
   function getAll () {
     return repository;
   }
+    // Function that creates li inside of ul elements and inserts the pokemon names
 
-  // Function that creates li inside of ul elements and inserts the pokemon names
-
-  function addListItem (repository) {
+  function addListItem (pokemon) {
     var $ul = document.querySelector('ul');
     var $li = document.createElement('li');
     $ul.appendChild($li);
     var $button = document.createElement('button');
     $li.appendChild($button);
-    $button.innerText = repository.name;
+    $button.innerText = pokemon.name;
     $button.addEventListener('click', function (event) {
-      console.log(repository.name, repository.detailsUrl)
+      console.log(pokemon.name, pokemon.detailsUrl, pokemon.height, pokemon.types, pokemon.imageUrl) //Loading where the info goes. Will change to append to a div
     })
     }
-
 
   function loadList () {
     return fetch(apiUrl).then(function (response){
@@ -33,26 +31,33 @@ var pokemonRepository = (function () {
         var pokemon = {
           name: item.name,
           detailsUrl: item.url,
-       };
         add(pokemon);
       });
     }).catch(function (e) {
       console.error(e);
     })
   }
+
   // Fetch data from API and add to the repository
   function loadDetails(item) {
     var url = item.detailsUrl;
-    return fetch(apiUrl).then(function (response) {
+    return fetch(url).then(function (response) {
       return response.json();
     }).then(function (details) {
-      item.imageUrl = details.sprites.front_default;
+      item.imageUrl = details.sprites.front_default; // loading items
       item.height = details.height;
-      item.types = Object.keys(details.types);
+      item.types = details.types.map(function(item) {return item.type.name})
     }).catch(function (e) {
       console.error(e);
     })
   }
+
+    // couldn't get showDetailsto work...
+  // function showDetails (item) {
+  //   pokemonRepository.loadDetails(item).then(function() {
+  //   console.log(item.height); }) // not showing anything for console.log
+  // }
+
   // returns the functions outside of the iife
   return {
     add: add,
@@ -62,23 +67,12 @@ var pokemonRepository = (function () {
     loadDetails: loadDetails
   };
 
-
-
-
 })()
 
-
-function showDetails (pokemon) {
-  pokemonRepository.loadDetails(pokemon).then(function() {
-    console.log(pokemon); })
-  }
 // puts the elements onto the page from the addListItem above
 pokemonRepository.loadList().then(function() {
   pokemonRepository.getAll().forEach(function (pokemon) {
-  pokemonRepository.addListItem(pokemon) });
+  pokemonRepository.addListItem(pokemon);
+  pokemonRepository.loadDetails(pokemon)
+    });
 });
-
-
-// pokemonRepository.getAll().forEach(function (repository) {
-//  pokemonRepository.addListItem(repository)
-// })
